@@ -1,0 +1,109 @@
+{% from "common/_macros.html" import static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="csrf_tokens" content="{{ csrf_token() }}">
+    <link rel="stylesheet" href="{{ static('cms/css/layuicss/layui.css') }}">
+<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <title>注册</title>
+</head>
+<style>
+    body{
+        background: #f1f1f1;
+    }
+    .outer-box{
+        width: 850px;
+        background: #FFFFFF;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+    .hed{
+        text-align: center;
+    }
+    .form-box{
+        padding-top: 25px;
+    }
+    .form-group{
+        width: 300px;
+        margin-left: 278px;
+        margin-top: 13px;
+    }
+</style>
+<body>
+
+    <div class="outer-box">
+        <h1 class="hed">BBS登录</h1>
+
+        <div class="form-box">
+
+            {#<form method="post">#}
+<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+            <div class="form-group">
+                <input type="text" class="form-control" name="telephone" placeholder="手机号码">
+            </div>
+
+            <div class="form-group">
+                <input type="password" class="form-control" name="password" placeholder="密码">
+            </div>
+
+            <div class="checkbox" style="margin-left: 33%;">
+                <label>
+                    <input type="checkbox"  name="remember" value="1" >记住我
+                </label>
+
+            </div>
+
+
+            <div class="form-group" >
+                <button class="btn btn-warning btn-block" id="sub-btns">立即登录</button>
+            </div>
+
+            <div class="form-group" >
+                <a href="{{ url_for("front.signup") }}" class="signup-link">
+                    没有账号？立即注册
+                </a>
+                <a href="#" class="resetpwd-link" style="float: right;">找回密码</a>
+            </div>
+
+        {#</form>#}
+        </div>
+    </div>
+
+
+</body>
+<script src="{{ static('cms/js/jquery-3.4.1.min.js') }}"></script>
+<script src="{{ static('cms/js/layui.all.js') }}"></script>
+<script src="{{ static('common/MD5.js') }}"></script>
+<script src="{{ static('front/js/front_signup.js') }}"></script>
+
+<script>
+
+//JavaScript代码区域
+$("#sub-btns").click(function (event) {
+    event.preventDefault()
+    var telephone = $("input[name='telephone']").val()
+    var password = $("input[name='password']").val()
+    var remember = $("input[name='remember']").val()
+
+    //var data= JSON.stringify({telephone:phone,timestamp:timestamp,sign:sign});
+    var data= {telephone:telephone,password:password,remember:remember};
+       $.ajax({
+            url:'/front/front_signin',
+            type:'POST',
+            data:data,
+            contentType:'application/json',
+            headers: {'X-CSRFToken': $("meta[name=csrf_tokens]").attr("content")},
+            success:function (response) {
+                console.info(response);
+
+            }
+        })
+
+})
+
+</script>
+
+
+</html>

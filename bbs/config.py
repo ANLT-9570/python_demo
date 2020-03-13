@@ -1,0 +1,39 @@
+import os
+
+DEBUG = True
+SECRET_KEY = os.urandom(24)
+DB_USERNAME =  'root'
+DB_PASSWORD = '123'
+DB_HOST = '127.0.0.1'
+DB_PORT = '3306'
+DB_NAME = 'bbs'
+
+DB_URL = 'mysql://root:123@127.0.0.1:3306/bbs'
+
+SQLALCHEMY_DATABASE_URI = DB_URL
+# 设置sqlalchemy自定跟踪数据库1
+SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+
+CMS_USER_ID = "ASFOIDJGPOSF"
+FRONT_USER_ID = "DGJSDOIGSDG"
+
+#
+#
+MAIL_SERVER = "smtp.qq.com"
+MAIL_PORT = "587"
+MAIL_USE_TLS = True
+#MAIL_USE_TLS = True
+MAIL_USERNAME = "1907402902@qq.com"
+MAIL_PASSWORD = "dluvzottaiuzbgdi"
+MAIL_DEFAULT_SENDER = "1907402902@qq.com"
+
+
+
+##阿里云相关配置
+ACCESS_KEY_ID = 'LTAIeuqHfzfWDUn7'
+ACCESS_KEY_SECRET = 'BQ9aXgzu16Y4SWsNjr0JRkgIuBqhgt'
+ACCESS_SIGN_NAME = 'xc'
+ACCESS_TEMPLATE_CODE = 'SMS_158546404'
+
+

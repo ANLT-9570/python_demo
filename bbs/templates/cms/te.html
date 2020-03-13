@@ -1,0 +1,43 @@
+{% from "common/_macros.html" import static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>asdas</title>
+      <link rel="stylesheet" href="{{ static('cms/css/layuicss/layui.css') }}">
+</head>
+<body>
+    <h1>哈哈哈哈</h1>
+    {% set user = g.cms_user %}
+    <table id="tal" class="layui-table">
+        <tbody>
+            <tr>
+                <td>用户名：</td>
+                <td>{{ user.username }}</td>
+            </tr>
+        <tr>
+                <td>邮箱：</td>
+                <td>{{ user.email }}</td>
+            </tr>
+        <tr>
+                <td>角色：</td>
+                <td>暂未实现</td>
+            </tr>
+        <tr>
+
+                <td>权限：</td>
+                <td>暂未实现</td>
+            </tr>
+        <tr>
+                <td>加入时间：</td>
+                <td>{{ user.join_time }}</td>
+            </tr>
+        </tbody>
+
+    </table>
+</body>
+<script src="{{ static('cms/js/layui.all.js') }}"></script>
+<script src="{{ static('cms/js/jquery-3.4.1.min.js') }}"></script>
+<script>
+</script>
+</html>
